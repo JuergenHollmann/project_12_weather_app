@@ -21,10 +21,9 @@ class MainApp extends StatelessWidget {
             //   shadowColor: Colors.black87, // funzt nicht
             //   elevation: 20, // graue Zone unter der AppBar
             // ),
-          
+
             child: const Text("Willkommen zur Wetter-App",
                 style: TextStyle(color: Colors.blue, fontSize: 24)),
-
           ),
         ),
       ),
@@ -42,6 +41,7 @@ class WeatherApp extends StatelessWidget {
         title: const Text('Einfache Wetter-App'),
         foregroundColor: Colors.white, // Schriftfarbe
         backgroundColor: const Color.fromARGB(255, 4, 85, 151), // dunkles Blau
+        toolbarHeight: 60,
         // shadowColor: Colors.black87, // funzt nicht
         elevation: 20, // graue Zone unter der AppBar
       ),
