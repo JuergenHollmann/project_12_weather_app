@@ -1,7 +1,34 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MainApp());
+  // const WeatherData(city: "München (DE)", temperature: 20.9, weatherCondition: "regnerisch");
+  WeatherData newWeatherData = const WeatherData(
+    city: "Hamburg (DE)",
+    temperature: 28.9,
+    weatherCondition: "windig",
+  );
+  print(newWeatherData.city);
+  print(newWeatherData.temperature);
+  print(newWeatherData.weatherCondition);
+
+//  void getCity(){
+//       newWeatherData.city;
+//       // setState(() {});
+//  }
+}
+
+class WeatherData extends WeatherApp {
+  final String city;
+  final double temperature;
+  final String weatherCondition;
+  const WeatherData(
+      {super.key,
+      required this.city,
+      required this.temperature,
+      required this.weatherCondition});
 }
 
 class MainApp extends StatelessWidget {
@@ -26,6 +53,7 @@ class WeatherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: avoid_unnecessary_containers
     return Container(
       child: Column(
         children: [
@@ -44,19 +72,19 @@ class WeatherApp extends StatelessWidget {
           const SizedBox(height: 0),
           const Divider(thickness: 2, height: 60, indent: 20, endIndent: 20),
           const Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
-              // crossAxisAlignment: CrossAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center, // hat keinen Effekt
+              // crossAxisAlignment: CrossAxisAlignment.center, // hat keinen Effekt
               children: [
-                Text("Stadt:",
+                Text("Staxdt:",
                     style: TextStyle(color: Colors.amber, fontSize: 20)),
                 SizedBox(height: 10),
-                Text("Schwäbisch Gmünd (DE)",
+                Text("Schwäbisch Gmünd",
                     style: TextStyle(color: Colors.amber, fontSize: 26)),
                 Divider(thickness: 2, height: 60, indent: 20, endIndent: 20),
                 Text("Temperatur:",
                     style: TextStyle(color: Colors.amber, fontSize: 20)),
                 SizedBox(height: 10),
-                Text("28 °C",
+                Text("28.3 °C",
                     style: TextStyle(color: Colors.amber, fontSize: 36)),
                 Divider(thickness: 2, height: 60, indent: 20, endIndent: 20),
                 Text("Wetter:",
