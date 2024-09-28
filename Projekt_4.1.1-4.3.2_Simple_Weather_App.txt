@@ -1,0 +1,89 @@
+Projekt_4.1.1-4.3.2_Simple_Weather_App
+
+Erstelle ein neues Git und GitHub Repository, committe deinen Code und pushe den Code ins GitHub. Füge dann den Link zu dem GitHub-Projekt hier ein.
+
+ Mache nach jeder Teilaufgabe einen Commit und einen Push.
+
+Deine Antwort:
+https://github.com/JuergenHollmann/project_12_weather_app
+
+
+Lass uns nun Schritt für Schritt die Wetter-App entwickeln! 🌦️☂
+
+Beginne damit, einen Scaffold hinzuzufügen, damit die Grundstruktur der App erstellt werden kann.
+Füge dem Scaffold eine AppBar hinzu, welche einen sinnvollen Titel enthält.
+Der schon vorhandene Container soll als Body des Scaffold eingesetzt werden.
+Mache Commit und Push.
+
+Nun kümmern wir uns um den Body der Applikation.
+
+Füge dem bereits vorhandenen Container den folgenden Text hinzu: “Willkommen zur Wetter-App!”
+
+Style nun den Text
+Nutze die Farbe Blau.
+Setze die Schriftgröße auf 24.
+Mache Commit und Push.
+
+Nun sollen ebenfalls eine Stadt, die Temperatur und das Wetter angezeigt werden. Diese sollen jeweils auf eine eigene Zeile.
+
+Füge jeweils Stadt, Temperatur und Wetter hinzu. Verwende für die eigene Zeile ein entsprechendes Flutter-Widget, das du in der Vorlesung kennengelernt hast.
+Zentriere Stadt, Temperatur und Wetter vertikal, sodass sie nicht mehr oben am Rand, sondern in der Mitte sind. 
+Hinweis: Hierfür musst du vermutlich eine Eigenschaft des Widgets setzen, das du verwendet hast, um die anderen Widgets untereinander anzuzeigen.
+Mache Commit und Push.
+
+Nun soll die App noch hübscher gemacht werden.
+
+Stelle die Texte auf dem Bildschirm auch horizontal zentriert dar.
+Ändere die Größe des Textes der Stadt, sodass sie größer als Temperatur und Wetter dargestellt wird.
+Ändere den Titel in der App Bar, damit er schöner aussieht (Größe, Farbe, …).
+Mache Commit und Push
+
+Die Wetterinformationen sollen nun in einer eigenen Klasse gespeichert werden. Diese soll WeatherData heißen. Diese Klasse ist kein Widget! Sie soll nur die Daten enthalten.
+
+Erstelle die Klasse WeatherData mit folgenden Attributen:
+String city
+double temperature
+String weatherCondition
+
+weatherCondition kann zum Beispiel die folgenden Werte enthalten: sunny, cloudy, rainy, stormy.
+Verwendung von WeatherData
+---------
+Lege nun ein Beispielobjekt der Klasse WeatherData in der main-Funktion an. Dieses Objekt soll der Klasse WeatherApp als Attribut übergeben werden. Dafür muss es zuerst der MainApp als Attribut übergeben werden.
+
+Als letztes möchten wir das Wetter anzeigen lassen. Ändere die schon vorhandenen Widgets so ab, dass sie die Daten aus der WeatherData-Klasse verwenden.
+
+Mache wieder Commit und Push 😃
+
+Das Wetter soll nun aus einem WeatherRepository geholt werden.
+
+Erstelle eine Klasse WeatherRepository, in einer eigenen Datei.
+Das WeatherRepository soll nun das Wetter enthalten.
+Das Wetter soll private sein, also von außen nicht direkt erreich- und änderbar.
+Erstelle im WeatherRepository eine Methode, um das Wetter abzurufen.
+Erstelle ein Objekt der Klasse WeatherRepository in der main-Funktion und gib dieses, anstelle des WeatherData-Objektes, als Parameter weiter.
+Dafür muss das Attribut in den entsprechenden Klassen angepasst werden, sodass jetzt das WeatherRepository anstatt WeatherData gespeichert wird.
+Verwende das Wetter aus dem WeatherRepository, indem das Weather geholt wird und die Daten an den entsprechenden Stellen angezeigt werden.
+
+Hinweis: Das WeatherRepository gibt ein WeatherData zurück.
+
+Mehr Wetter!!!
+Natürlich gibt es mehr Orte, an denen es Wetter gibt. Das WeatherRepository soll so umgebaut werden, dass es zufällig das Wetter von einem Ort zurück gibt, anstatt immer das Wetter vom selben Ort.
+
+Wandle das WeatherRepository so um, dass es eine Liste von WeatherData enthält, anstatt ein einzelnes WeatherData.
+Passe die Methode, welche ein WeatherData zurückgibt, so an, dass sie zufällig eins der WeatherData aus der Liste zurückgibt..
+Dies kannst du testen, indem du die App restartest ( ). Es sollte dann jeweils ein anderes Wetter angezeigt werden.
+
+ 
+Neuen Ort anzeigen (schwer!) 
+Es soll ein neuer Ort mithilfe eines Floating Action Button angezeigt werden können. Hierfür muss sich das Widget merken, von welchem Ort gerade das Wetter angezeigt wird, und es auf Wunsch ändern.
+
+Stelle das WeatherApp Widget auf ein StatefulWidget um.
+Speichere das WeatherData in dem State des Widgets.
+Füge einen Floating Action Button hinzu.
+Der Floating Action Button soll nun in seiner onPressed(...) ein neues WeatherData aus dem Repository holen, es in der Variable für WeatherData speichern und dann setState() aufrufen, damit das neue Wetter angezeigt wird.
+Wenn man nun den FAB drückt, sollte ein neues Wetter angezeigt werden 🎉
+
+Hinweis: Falls dein WeatherRepository im StatefulWidget selber ist und nicht im State, kannst du trotzdem über widget.weatherRepository darauf zugreifen (bzw. dem Namen, den du der Variable des WeatherRepository gegeben hast).
+
+Implementieren:
+floatingActionButton: FloatingActionButton.extended(onPressed: null, label: Text("Bonus 2")),

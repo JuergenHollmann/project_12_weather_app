@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MainApp());
-  // const WeatherData(city: "München (DE)", temperature: 20.9, weatherCondition: "regnerisch");
+  // const WeatherData(
+  //     city: "München (DE)", temperature: 20.9, weatherCondition: "regnerisch");
   WeatherData newWeatherData = const WeatherData(
     city: "Hamburg (DE)",
     temperature: 28.9,
@@ -13,22 +14,6 @@ void main() {
   print(newWeatherData.city);
   print(newWeatherData.temperature);
   print(newWeatherData.weatherCondition);
-
-//  void getCity(){
-//       newWeatherData.city;
-//       // setState(() {});
-//  }
-}
-
-class WeatherData extends WeatherApp {
-  final String city;
-  final double temperature;
-  final String weatherCondition;
-  const WeatherData(
-      {super.key,
-      required this.city,
-      required this.temperature,
-      required this.weatherCondition});
 }
 
 class MainApp extends StatelessWidget {
@@ -47,9 +32,58 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class WeatherApp extends StatelessWidget {
+class WeatherData extends WeatherApp {
+  final String city;
+  final double temperature;
+  final String weatherCondition;
+  const WeatherData(
+      {super.key,
+      required this.city,
+      required this.temperature,
+      required this.weatherCondition});
+
+  // void getCity(String city) {
+  //   //setState((){};
+  // }
+  // void getTemperature(double temperature) {}
+  // void getWeatherCondition(String weatherCondition) {}
+}
+
+class WeatherApp extends StatefulWidget {
   // const WeatherApp(Scaffold scaffold, {super.key}); // funzt nicht!
   const WeatherApp({super.key});
+  // final String city = "Hussenhofen";
+  // final double temperature = 0;
+  // final String weatherCondition = "stürmisch";
+  @override
+  State<WeatherApp> createState() => _WeatherAppState();
+}
+
+class _WeatherAppState extends State<WeatherApp> {
+  String city = "Hussenhofen";
+  double temperature = 0;
+  String weatherCondition = "stürmisch";
+
+  void getCity(city) {
+    setState(() {
+      city = "London";
+      //return print(city.toString()); // Rückgabe bei "void"
+      //print(city.toString());
+      print(city);
+    });
+  }
+
+  void getTemperature(double temperature) {
+    setState(() {
+      temperature = 12.5;
+    });
+  }
+
+  void getWeatherCondition(String weatherCondition) {
+    setState(() {
+      weatherCondition = "starker Regen";
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,28 +105,31 @@ class WeatherApp extends StatelessWidget {
               style: TextStyle(color: Colors.blue, fontSize: 24)),
           const SizedBox(height: 0),
           const Divider(thickness: 2, height: 60, indent: 20, endIndent: 20),
-          const Column(
+          Column(
               // mainAxisAlignment: MainAxisAlignment.center, // hat keinen Effekt
               // crossAxisAlignment: CrossAxisAlignment.center, // hat keinen Effekt
               children: [
-                Text("Staxdt:",
+                const Text("Stadt:",
                     style: TextStyle(color: Colors.amber, fontSize: 20)),
-                SizedBox(height: 10),
-                Text("Schwäbisch Gmünd",
-                    style: TextStyle(color: Colors.amber, fontSize: 26)),
-                Divider(thickness: 2, height: 60, indent: 20, endIndent: 20),
-                Text("Temperatur:",
+                const SizedBox(height: 10),
+                Text("${getCity}",
+                    style: const TextStyle(color: Colors.amber, fontSize: 26)),
+                const Divider(
+                    thickness: 2, height: 60, indent: 20, endIndent: 20),
+                const Text("Temperatur:",
                     style: TextStyle(color: Colors.amber, fontSize: 20)),
-                SizedBox(height: 10),
-                Text("28.3 °C",
-                    style: TextStyle(color: Colors.amber, fontSize: 36)),
-                Divider(thickness: 2, height: 60, indent: 20, endIndent: 20),
-                Text("Wetter:",
+                const SizedBox(height: 10),
+                Text("$getTemperature °C",
+                    style: const TextStyle(color: Colors.amber, fontSize: 36)),
+                const Divider(
+                    thickness: 2, height: 60, indent: 20, endIndent: 20),
+                const Text("Wetter:",
                     style: TextStyle(color: Colors.amber, fontSize: 20)),
-                SizedBox(height: 10),
-                Text("leicht bewölkt",
-                    style: TextStyle(color: Colors.amber, fontSize: 26)),
-                Divider(thickness: 2, height: 60, indent: 20, endIndent: 20),
+                const SizedBox(height: 10),
+                Text("$getWeatherCondition",
+                    style: const TextStyle(color: Colors.amber, fontSize: 26)),
+                const Divider(
+                    thickness: 2, height: 60, indent: 20, endIndent: 20),
               ]),
         ],
       ),
