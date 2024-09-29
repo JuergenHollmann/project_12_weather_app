@@ -47,13 +47,13 @@ String weatherCondition
 
 weatherCondition kann zum Beispiel die folgenden Werte enthalten: sunny, cloudy, rainy, stormy.
 Verwendung von WeatherData
----------
+
 Lege nun ein Beispielobjekt der Klasse WeatherData in der main-Funktion an. Dieses Objekt soll der Klasse WeatherApp als Attribut übergeben werden. Dafür muss es zuerst der MainApp als Attribut übergeben werden.
 
 Als letztes möchten wir das Wetter anzeigen lassen. Ändere die schon vorhandenen Widgets so ab, dass sie die Daten aus der WeatherData-Klasse verwenden.
 
 Mache wieder Commit und Push 😃
-
+---------
 Das Wetter soll nun aus einem WeatherRepository geholt werden.
 
 Erstelle eine Klasse WeatherRepository, in einer eigenen Datei.
