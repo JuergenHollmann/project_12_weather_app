@@ -1,21 +1,25 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
+// import 'data_repository.dart';
 
 void main() {
-  runApp(const MainApp());
+  final dataRepository = WeatherRepository;
+  runApp(MainApp(repository: dataRepository));
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  const MainApp({super.key, required this.repository});
+  final DataRepository repository;
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
+        //repository: WeatherRepository,
         backgroundColor: Color.fromARGB(255, 17, 0, 209),
         body: SafeArea(
-          child: WeatherApp(),
+          child: WeatherApp(
+            repository: null,
+          ),
         ),
       ),
     );
@@ -30,20 +34,24 @@ class WeatherData extends WeatherApp {
       {super.key,
       required this.city,
       required this.temperature,
-      required this.weatherCondition});
+      required this.weatherCondition,
+      required super.repository});
 }
 
 class WeatherApp extends StatefulWidget {
   //const WeatherApp(Scaffold scaffold, {super.key}); // funzt nicht!
-  const WeatherApp({super.key});
+  const WeatherApp({super.key, required this.repository});
+  final DataRepository repository;
+
   @override
   State<WeatherApp> createState() => _WeatherAppState();
 }
 
 class _WeatherAppState extends State<WeatherApp> {
-  String city = "Berlin";
-  double temperature = 18.7;
-  String weatherCondition = "leicht bewölkt";
+  // final WeatherDataX quote = widget.repository.getWeather();
+  // String city = "Berlin";
+  // double temperature = 18.7;
+  // String weatherCondition = "leicht bewölkt";
 
   // void getCity(city) {
   //   setState(() {
@@ -68,6 +76,15 @@ class _WeatherAppState extends State<WeatherApp> {
 
   @override
   Widget build(BuildContext context) {
+    final WeatherData inputData = widget.repository.getDataRepo();
+    final String city = inputData.city;
+    final double temperature = inputData.temperature;
+    final String weatherCondition = inputData.weatherCondition;
+
+    // String city = "Berlin";
+    // double temperature = 18.7;
+    // String weatherCondition = "leicht bewölkt";
+
     // ignore: avoid_unnecessary_containers
     return Container(
       child: Column(
