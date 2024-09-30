@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'data_repository.dart';
 import 'weather_repository.dart';
 //import 'data_repository.dart';
 
 void main() {
-  final dataRepository = WeatherRepository;
+  DataRepository dataRepository = WeatherRepository;
   runApp(MainApp(repository: dataRepository));
 }
 
@@ -14,13 +15,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
         //repository: WeatherRepository,
-        backgroundColor: Color.fromARGB(255, 17, 0, 209),
+        backgroundColor: const Color.fromARGB(255, 17, 0, 209),
         body: SafeArea(
           child: WeatherApp(
-            repository: null,
+            repository: repository,
           ),
         ),
       ),
